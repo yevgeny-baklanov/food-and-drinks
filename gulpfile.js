@@ -11,20 +11,26 @@ const path = {
     css: projectFolder + "/css/",
     js: projectFolder + "/js/",
     img: projectFolder + "/img/",
+    pngimg: projectFolder + "/img/",
+    svgimg: projectFolder + "/img/icons/",
     fonts: projectFolder + "/fonts/"
   },
   src: {
     html: [sourceFolder + "/*.html", "!" + sourceFolder + "/**/_*.html"],
     css: [sourceFolder + "/sass/*.sass", "!" + sourceFolder + "/sass/**/_*.sass"],
     js: [sourceFolder + "/js/*.js", "!" + sourceFolder + "/js/**/_*.js"],
-    img: sourceFolder + "/img/**/*.{jpg, png, svg, gif, ico, webp}",
+    img: sourceFolder + "/img/*.{jpg, svg, gif, ico, webp}",
+    pngimg: sourceFolder + "/img/*.png",
+    svgimg: sourceFolder + "/img/icons/*.{svg, ico}",
     fonts: sourceFolder + "/fonts/**/*.ttf"
   },
   watch: {
     html: sourceFolder + "/**/*.html",
     css: sourceFolder + "/sass/**/*.sass",
     js: sourceFolder + "/js/**/*.js",
-    img: sourceFolder + "/img/**/*.{jpg, png, svg, gif, ico, webp}"
+    img: sourceFolder + "/img/*.{jpg, svg, gif, ico, webp}",
+    pngimg: sourceFolder + "/img/*.png",
+    svgimg: sourceFolder + "/img/icons/*.{svg, ico}"
   },
   clean: projectFolder + "/"
 };
@@ -122,6 +128,30 @@ function img() {
 }
 // Проводит операции над картинками
 
+function pngimg() {
+  return src(path.src.pngimg)
+        .pipe(webp({
+          quality: 70
+        }))
+        .pipe(dest(path.build.pngimg))
+        .pipe(src(path.src.pngimg))
+        .pipe(imagemin({
+          progressive: true,
+          svgoPlugins: [{removeViewBox: false}],
+          interlaced: true,
+          optimizationLevel: 3
+        }))
+        .pipe(dest(path.build.pngimg))
+        .pipe(browsersync.stream());
+}
+// Проводит операции над картинками
+
+function svgimg() {
+  return src(path.src.svgimg)
+        .pipe(dest(path.build.svgimg))
+        .pipe(browsersync.stream());
+}
+
 function fonts() {
   src(path.src.fonts)
   .pipe(ttf2woff())
@@ -161,6 +191,8 @@ function watchFiles() {
   gulp.watch([path.watch.css, sourceFolder + "/css/**/*.css"], css);
   gulp.watch([path.watch.js], js);
   gulp.watch([path.watch.img], img);
+  gulp.watch([path.watch.pngimg], pngimg);
+  gulp.watch([path.watch.svgimg], svgimg);
 }
 // Следит за изменением файлов
 
@@ -178,7 +210,7 @@ gulp.task('otf2ttf', function() {
 });
 // Превращает шрифты otf в ttf
 
-const build = series(clean, parallel(html, css, js, img, fonts), fontsStyle);
+const build = series(clean, parallel(html, css, js, img, pngimg, svgimg, fonts), fontsStyle);
 const watch = parallel(build, watchFiles, browserSync);
 
 exports.default = watch;

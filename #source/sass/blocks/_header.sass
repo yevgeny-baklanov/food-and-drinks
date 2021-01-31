@@ -1,0 +1,83 @@
+.header
+  &__top
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 37px 0
+  &__subtitle
+    font-family: Poppins
+    font-weight: normal
+    font-size: 12px
+    line-height: 18px
+  &__logo
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 123px
+    height: 68px
+    transform: translate(-50%, -50%)
+  &__search-icon, &__wallet-icon
+    margin: 0 30px 0 0
+    width: 24px
+    height: 24px
+  &__burger
+    position: relative
+    width: 18px
+    height: 16px
+    &>span
+      position: absolute
+      top: 50%
+      left: 0
+      width: 100%
+      height: 2px
+      background-color: #ffffff
+      transform: translate(0, -50%)
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 2px
+      background-color: #ffffff
+    &::after
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 100%
+      height: 2px
+      background-color: #ffffff
+  &__bottom
+    padding: 22px 0
+    border-top: 1px solid #999999
+    border-bottom: 1px solid #999999
+
+.header-menu
+  display: flex
+  justify-content: space-between
+  align-items: center
+  &__item
+    font-family: ChocolateBox
+    font-style: normal
+    font-weight: normal
+    font-size: 16px
+    line-height: 9px
+
+.user-list
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 0 33px 0 0
+  &__item
+    font-family: Poppins
+    font-weight: normal
+    font-size: 12px
+    line-height: 18px
+    &:not(:last-child)
+      margin: 0 46px 0 0
+
+.helping-icons-block
+  display: flex
+  align-items: center
