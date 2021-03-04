@@ -2,34 +2,62 @@
   <div class="container">
     <div class="header__top">
       <span class="header__subtitle">We Ship Everywhere! Free In The Us!</span>
-      <div class="fit-img header__logo"><img src="img/header-logo.png" alt="Food & Drinks"></div>
+      <a href="#" class="fit-img header__logo"><img src="img/header-logo.png" alt="Food & Drinks"></a>
       <div style="display: flex; align-items: center">
         <ul class="user-list">
-          <li class="user-list__item">Login</li>
-          <li class="user-list__item">Register</li>
-          <li class="user-list__item">Wish List (0)</li>
+          <li class="user-list__item"><a href="#">Login</a></li>
+          <li class="user-list__item"><a href="#">Register</a></li>
+          <li class="user-list__item"><a href="#">Wish List (0)</a></li>
         </ul>
         <div class="helping-icons-block">
-          <div class="fit-img header__search-icon"><img src="img/icons/search.svg" alt="Search"></div>
-          <div class="fit-img header__wallet-icon"><img src="img/icons/wallet.svg" alt="Search"></div>
-          <div class="header__burger"><span></span></div>
+          <button class="fit-img header__search-icon"><img src="img/icons/search.svg" alt="Search"></button>
+          <button class="fit-img header__wallet-icon"><img src="img/icons/wallet.svg" alt="Search"></button>
+          <div style="position: relative">
+            <button class="header__burger"><span></span></button>
+            <div class="dropdown-header-menu">
+              <ul class="dropdown-header-menu__user-list">
+                <li class="dropdown-header-menu__user-list-item"><a href="#">Login</a></li>
+                <li class="dropdown-header-menu__user-list-item"><a href="#">Register</a></li>
+                <li class="dropdown-header-menu__user-list-item"><a href="#">Wish List (0)</a></li>
+              </ul>
+              <ul class="dropdown-header-menu__list">
+                <li class="dropdown-header-menu__list-item exl"><a href="#">Home</a></li>
+                <li class="dropdown-header-menu__list-item exl"><a href="#">Vintage</a></li>
+                <li class="dropdown-header-menu__list-item exl"><a href="#">Imperial</a></li>
+                <li class="dropdown-header-menu__list-item exl"><a href="#">Sparkling</a></li>
+                <li class="dropdown-header-menu__list-item exl"><a href="#">Accessories</a></li>
+                <li class="dropdown-header-menu__list-item exl"><a href="#">Blog</a></li>
+                <li class="dropdown-header-menu__list-item exl"><a href="#">Product Details</a></li>
+                <li class="dropdown-header-menu__list-item exl"><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- /.dropdown-header-menu -->
         </div>
       </div>
     </div>
     <!-- /.header__top -->
     <div class="header__bottom">
       <ul class="header-menu">
-        <li class="header-menu__item">Home</li>
-        <li class="header-menu__item">Vintage</li>
-        <li class="header-menu__item">Imperial</li>
-        <li class="header-menu__item">Sparkling</li>
-        <li class="header-menu__item">Accessories</li>
-        <li class="header-menu__item">Blog</li>
-        <li class="header-menu__item">Product Details</li>
-        <li class="header-menu__item">Contact</li>
+        <li class="header-menu__item exl"><a href="#">Home</a></li>
+        <li class="header-menu__item exl"><a href="#">Vintage</a></li>
+        <li class="header-menu__item exl"><a href="#">Imperial</a></li>
+        <li class="header-menu__item exl"><a href="#">Sparkling</a></li>
+        <li class="header-menu__item exl"><a href="#">Accessories</a></li>
+        <li class="header-menu__item exl"><a href="#">Blog</a></li>
+        <li class="header-menu__item exl"><a href="#">Product Details</a></li>
+        <li class="header-menu__item exl"><a href="#">Contact</a></li>
       </ul>
     </div>
     <!-- /.header__bottom -->
+    <div class="search-block">
+      <form action="#" class="search-form">
+        <input class="search-form__input" type="search" name="search" id="search" placeholder="Search">
+        <button type="submit" class="fit-img search-form__button"><img src="img/icons/search-black.svg" alt="Search"></button>
+      </form>
+    </div>
+    <!-- /.search-block -->
   </div>
   <!-- /.container -->
 </header>

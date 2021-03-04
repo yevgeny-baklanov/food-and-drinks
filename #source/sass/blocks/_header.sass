@@ -21,10 +21,12 @@
     margin: 0 30px 0 0
     width: 24px
     height: 24px
+    background-color: transparent
   &__burger
     position: relative
     width: 18px
     height: 16px
+    background-color: transparent
     &>span
       position: absolute
       top: 50%
@@ -49,21 +51,87 @@
       width: 100%
       height: 2px
       background-color: #ffffff
+    &_active
+      animation: burgerActive 0.4s linear 1 normal 0.2s forwards
+      &::before
+        animation: burgerBeforeElementRotate 0.2s linear 1 normal forwards
+      &::after
+        animation: burgerAfterElementRotate 0.2s linear 1 normal forwards
   &__bottom
     padding: 22px 0
     border-top: 1px solid #999999
     border-bottom: 1px solid #999999
+
+.dropdown-header-menu
+  position: absolute
+  top: 26px
+  right: 0
+  z-index: 100
+  width: 270px
+  height: auto
+  padding: 35px 65px
+  border-radius: 10px 0px 10px 10px
+  overflow: hidden
+  transition: all 0.3s linear
+  visibility: hidden
+  opacity: 0
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: #ffffff
+    opacity: 0.8
+    z-index: -1
+  &_active
+    visibility: visible
+    opacity: 1
+  &__user-list
+    display: none
+  &__list
+    display: flex
+    flex-direction: column
+    align-items: center
+  &__list-item
+    position: relative
+    width: min-content
+    &>a
+      font-family: ChocolateBox
+      font-style: normal
+      font-weight: normal
+      font-size: 16px
+      line-height: 20px
+      text-align: center
+      color: #000000
+    &:not(:last-child)
+      margin: 0 0 35px 0
 
 .header-menu
   display: flex
   justify-content: space-between
   align-items: center
   &__item
+    position: relative
     font-family: ChocolateBox
     font-style: normal
     font-weight: normal
     font-size: 16px
     line-height: 9px
+    &-active
+      &>a
+        color: #E2B024
+      &::before
+        content: ''
+        position: absolute
+        bottom: -6px
+        left: 0
+        width: 100%
+        height: 1px
+        background-color: #E2B024
+        animation: lineShow 0.5s linear 1 normal forwards
+        animation-delay: 0
 
 .user-list
   display: flex
@@ -81,3 +149,75 @@
 .helping-icons-block
   display: flex
   align-items: center
+
+.search-block
+  visibility: hidden
+  position: fixed
+  top: 0
+  left: 0
+  height: 100vh
+  width: 100vw
+  &__active
+    visibility: visible
+
+.search-form
+  visibility: hidden
+  position: fixed
+  top: -60px
+  left: 50%
+  height: 60px
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 17px 32px 17px 45px
+  background: #C4C4C4
+  border-radius: 0px 0px 12px 12px
+  transform: translate(-50%, 0)
+  transition: top 0.5s ease
+  &__active
+    visibility: visible
+    top: 0
+  &__input
+    width: auto
+    background: transparent
+    &::placeholder
+      font-family: Roboto
+      font-style: normal
+      font-weight: 500
+      font-size: 17px
+      line-height: 20px
+      color: rgba(0, 0, 0, 0.67)
+  &__button
+    width: 30px
+    height: 30px
+    background: transparent
+
+@keyframes lineS how
+  0%
+    transform: scale(0, 1)
+  100%
+    transform: scale(1, 1)
+
+@keyframes burgerActive
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(-90deg)
+
+@keyframes burgerBeforeElementRotate
+  0%
+    width: 100%
+  100%
+    width: 12px
+    left: -1px
+    transform: rotate(-35deg)
+    top: 4px
+
+@keyframes burgerAfterElementRotate
+  0%
+    width: 100%
+  100%
+    width: 12px
+    left: -1px
+    transform: rotate(35deg)
+    bottom: 4px
