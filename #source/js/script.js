@@ -17,6 +17,10 @@ const modalClose = document.querySelectorAll('[data-close]');
 
 searchBlockForm.style.width = container.clientWidth + 'px';
 
+window.addEventListener('resize', () => {
+  searchBlockForm.style.width = container.clientWidth + 'px';
+});
+
 headerSearchIcon.addEventListener('click', function() {
   searchBlock.classList.add('search-block__active');
   searchBlockForm.classList.add('search-form__active');

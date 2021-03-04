@@ -1,0 +1,58 @@
+@media (max-width: 992px)
+  .header
+    &__user-list
+      display: none
+    &-menu
+      &__item
+        &:nth-child(8),
+        &:nth-child(7),
+        &:nth-child(6)
+          display: none
+    &__subtitle
+      font-size: 10px
+  .dropdown-header-menu
+    &__user-list
+      position: relative
+      display: flex
+      flex-direction: column
+      align-items: center
+      &-item
+        margin: 0 0 20px 0
+        font-family: Poppins
+        font-weight: normal
+        font-size: 12px
+        line-height: 18px
+        &>a
+          color: #000000
+      &::before
+        content: ''
+        position: absolute
+        bottom: 8.5px
+        left: -65px
+        width: 270px
+        height: 1px
+        background-color: #777777
+
+@media (max-width: 515px)
+  .header
+    &__top
+      display: flex
+      flex-direction: column
+      align-items: center
+      padding: 45px 0 0 0
+    &__bottom
+      display: none
+    &__logo
+      position: static
+      transform: translate(0, 0)
+      order: -1
+      margin: 0 0 7px 0
+    &__subtitle
+      font-size: 14px
+    &__helping-icons-block
+      position: fixed
+      top: 0
+      left: 0
+      width: 100vw
+      padding: 0 15px
+      background: rgba(255, 255, 255, 0.17)
