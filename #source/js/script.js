@@ -29,25 +29,10 @@ headerSearchIcon.addEventListener('click', function() {
     }
   });
 });
-
-window.addEventListener('keydown', (e) => {
-  if (e.code == 'Escape' && searchBlock.classList.contains('search-block__active')) {
-    searchBlock.classList.remove('search-block__active');
-    searchBlockForm.classList.remove('search-form__active');
-    document.body.style.overflow = 'auto';
-  }
-});
-  
+// Функция для поиска
 
 modalClose.forEach(function(item) {
   item.addEventListener('click', closeModal);
-});
-
-exapmleLink.forEach(function(item) {
-  item.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal('exl-modal');
-  });
 });
 
 modal.forEach(function(item) {
@@ -57,17 +42,43 @@ modal.forEach(function(item) {
     }
   });
 });
+//Функции для закрытия модальных окон
+
+exapmleLink.forEach(function(item) {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal('exl-modal');
+  });
+});
+// Функция для тестовых ссылок
 
 headerMenu.firstElementChild.classList.add('header-menu__item-active');
 removeActiveItem(headerMenu);
-
 dropdownHeaderMenuList.firstElementChild.classList.add('header-menu__item-active');
 removeActiveItem(dropdownHeaderMenuList);
+// Удаляемо клас активности
 
 headerBurger.addEventListener('click', function(e) {
   dropdownHeaderMenu.classList.toggle("dropdown-header-menu_active");
   e.currentTarget.classList.toggle("header__burger_active");
+  window.addEventListener('click', function(e) {
+    let target = e.target.closest(e.target.tagName);
+    if (!target.matches('.dropdown-header-menu') && !target.matches('.dropdown-header-menu__list') && !target.matches('.header__burger') && !target.matches('.header__burger > span')) {
+      dropdownHeaderMenu.classList.remove("dropdown-header-menu_active");
+      headerBurger.classList.remove("header__burger_active");
+    }
+    });
 });
+// Активирует бургер
+
+window.addEventListener('keydown', (e) => {
+  if (e.code == 'Escape' && searchBlock.classList.contains('search-block__active')) {
+    searchBlock.classList.remove('search-block__active');
+    searchBlockForm.classList.remove('search-form__active');
+    document.body.style.overflow = 'auto';
+  }
+});
+// Escape Функции
 
 // <Проверяет поддержку браузера картинок с форматом webp>
 function testWebP(callback) {
@@ -120,4 +131,3 @@ function removeActiveItem(item) {
 }
 
 });
-
