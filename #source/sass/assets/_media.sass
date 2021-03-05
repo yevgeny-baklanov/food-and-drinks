@@ -49,10 +49,37 @@
       margin: 0 0 7px 0
     &__subtitle
       font-size: 14px
+      text-align: center
     &__helping-icons-block
       position: fixed
       top: 0
       left: 0
+      z-index: 101
       width: 100vw
-      padding: 0 15px
+      padding: 7px 15px
       background: rgba(255, 255, 255, 0.17)
+    &__search-icon
+      margin: 0 auto 0 0
+    &__wallet-icon
+      margin: 0 33px 0 0
+
+  .search-form
+    height: 48px
+    &::placeholder
+      font-size: 15px
+
+  .dropdown-header-menu
+    position: fixed
+    top: 38px
+    right: 0
+    width: 100vw
+    height: 100vh
+    padding: 40px 80px
+    border-radius: 0
+    &__user-list
+      &::before
+        bottom: 8.5px
+        left: -100vw
+        width: 300vw
+    &__list
+      padding: 0 0 60px 0
