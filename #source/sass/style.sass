@@ -91,6 +91,32 @@ body, html
       height: 30px
       background-color: transparent
 
+.chb
+  font-family: ChocolateBox
+  font-weight: normal
+
+.text
+  font-family: Poppins
+  font-weight: 300
+  font-size: 16px
+  text-align: center
+  color: #FFFFFF
+  @include adf(16, 15)
+
+.yellow
+  color: #E2B024
+
+.underlined
+  position: relative
+  &::before
+    content: ''
+    position: absolute
+    bottom: -8px
+    left: 0
+    height: 1px
+    width: 100%
+    background-color: #E2B024
+
 .modal
   visibility: hidden
   opacity: 0
@@ -103,6 +129,7 @@ body, html
 
 //<ПОДКЛЮЧЕНИЯ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЕЛЕМЕНТОВ>=========================================================================
 @import "blocks/_header.sass"
+@import "blocks/_preview.sass"
 @import "blocks/_footer.sass"
 @import "assets/_media.sass"
 //</ПОДКЛЮЧЕНИЯ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЕЛЕМЕНТОВ>========================================================================
