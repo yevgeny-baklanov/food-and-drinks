@@ -56,8 +56,7 @@ body, html
   align-items: center
   justify-content: center
   overflow: hidden
-  & img
-    width: 100%
+  & img, picture
     max-width: 100%
     height: 100%
     max-height: 100%
@@ -125,11 +124,33 @@ body, html
   visibility: visible
   opacity: 1
   transition: all 0.5s ease-out
+
+.learn-more
+  padding: 22px 47px
+  background: #E2B024
+  font-family: Poppins
+  font-weight: 500
+  font-size: 24px
+  color: #1F1F1F
+  @include adf(24, 16)
+.view-more
+  padding: 22px 27px
+  font-family: Poppins
+  font-weight: 500
+  line-height: 100%
+  color: #FFFFFF
+  border: 1px solid #E2B024
+  background: transparent
+  @include adf(24, 16)
+
 //</ОСНОВНОЙ БЛОК>=======================================================================================================
 
 //<ПОДКЛЮЧЕНИЯ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЕЛЕМЕНТОВ>=========================================================================
+
 @import "blocks/_header.sass"
 @import "blocks/_preview.sass"
+@import "blocks/_descr-slider.sass"
 @import "blocks/_footer.sass"
 @import "assets/_media.sass"
+
 //</ПОДКЛЮЧЕНИЯ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЕЛЕМЕНТОВ>========================================================================

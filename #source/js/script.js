@@ -134,4 +134,39 @@ function removeActiveItem(item) {
   });
 }
 
+//description-modal
+
+  const descriptionSlider = document.querySelector('.description-slider__body'),
+        sliderInner = descriptionSlider.querySelector('.description-slider__inner'),
+        slides = descriptionSlider.querySelectorAll('.description-slider__slide'),
+        next = descriptionSlider.querySelector('.description-slider__next'),
+        prev = descriptionSlider.querySelector('.description-slider__prev'),
+        circle = descriptionSlider.querySelector('.description-slider__bg-block > img'),
+        width = window.getComputedStyle(container).width;
+  let offset = 0;
+
+  sliderInner.style.width = (slides.length * 100) + '%';
+
+next.addEventListener('click', () => {
+    if (offset == (slides.length - 1) * +parseInt(width)) {
+      offset = 0;
+    } else {
+      offset += parseInt(width);
+    }
+
+    sliderInner.style.transform = `translateX(-${offset}px)`;    
+  });
+
+  prev.addEventListener('click', () => {
+    if (offset == 0) {
+      offset = (slides.length - 1) * +parseInt(width);
+    } else {
+      offset -= parseInt(width);
+    }
+
+    sliderInner.style.transform = `translateX(-${offset}px)`;
+  });
+
+//description-modal
+
 });

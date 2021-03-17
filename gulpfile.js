@@ -49,9 +49,6 @@ const {src, dest, series, parallel} = require("gulp"),
       rename = require('gulp-rename'),
       uglify = require('gulp-uglify-es').default,
       imagemin = require('gulp-imagemin'),
-      webp = require('gulp-webp'),
-      webpHtml = require('gulp-webp-html'),
-      webpcss = require('gulp-webpcss'),
       ttf2woff = require('gulp-ttf2woff'),
       ttf2woff2 = require('gulp-ttf2woff2'),
       fonter = require('gulp-fonter');
@@ -69,7 +66,6 @@ function browserSync() {
 function html() {
   return src(path.src.html)
         .pipe(fileInclude())
-        .pipe(webpHtml())
         .pipe(dest(path.build.html))
         .pipe(browsersync.stream());
 }
@@ -86,7 +82,6 @@ function css() {
         .pipe(autoprefixer({
           overrideBrowserslist: ["last 5 versions"]
         }))
-        .pipe(webpcss())
         .pipe(dest(path.build.css))
         .pipe(cleanCss())
         .pipe(rename({
@@ -112,11 +107,6 @@ function js() {
 
 function img() {
   return src(path.src.img)
-        .pipe(webp({
-          quality: 70
-        }))
-        .pipe(dest(path.build.img))
-        .pipe(src(path.src.img))
         .pipe(imagemin({
           progressive: true,
           svgoPlugins: [{removeViewBox: false}],
@@ -130,11 +120,6 @@ function img() {
 
 function pngimg() {
   return src(path.src.pngimg)
-        .pipe(webp({
-          quality: 70
-        }))
-        .pipe(dest(path.build.pngimg))
-        .pipe(src(path.src.pngimg))
         .pipe(imagemin({
           progressive: true,
           svgoPlugins: [{removeViewBox: false}],
@@ -210,7 +195,7 @@ gulp.task('otf2ttf', function() {
 });
 // Превращает шрифты otf в ttf
 
-const build = series(clean, parallel(html, css, js, img, pngimg, svgimg, fonts), fontsStyle);
+const build = series(clean, parallel(html, css, js, img, pngimg, svgimg, fonts));
 const watch = parallel(build, watchFiles, browserSync);
 
 exports.default = watch;

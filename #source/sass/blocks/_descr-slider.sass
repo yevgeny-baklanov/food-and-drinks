@@ -1,0 +1,123 @@
+.description-slider
+  padding: 145px 0
+  background: #18191A
+  &__body
+    position: relative
+  &__wrapper
+    overflow: hidden
+  &__inner
+    position: relative
+    z-index: 2
+    display: flex
+    width: 100%
+    transition: all 0.8s ease
+  &__slide
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
+  &__bg-block
+    position: absolute
+    top: 50%
+    right: 0
+    z-index: 1
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 477px
+    width: 568px
+    background-image: url('../img/icons/description-slider-bg-lines.svg')
+    background-size: 100% 100%
+    background-repeat: no-repeat
+    background-position: center
+    transform: translate(0, -50%)
+    &>img
+      width: 374px
+      height: 374px
+      // &.description-slider__bg-block-img-active
+      //   animation: changeSize 1s ease-in 1 alternate forwards
+  &__switches
+    position: absolute
+    top: 50%
+    right: 0
+    display: flex
+    justify-content: space-between
+    width: 568px
+    transform: translate(0, -50%)
+    z-index: 3
+  &__prev
+    transform: translateX(-50%)
+  &__next
+    transform: translateX(50%)
+  &__prev, &__next
+    position: relative
+    font-family: Poppins
+    font-weight: 500
+    color: #FFFFFF
+    background: transparent
+    @include adf(20, 15)
+    @include adi(30, 22)
+    &::before
+      content: ''
+      position: absolute
+      left: 0
+      bottom: -2px
+      height: 1px
+      width: 100%
+      background: #ffffff
+      border-radius: 2px
+
+.description-slider-slide
+  &__description
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: space-between
+    max-width: 526px
+  &__type
+    margin: 0 0 45px 0
+    font-family: Poppins
+    font-weight: normal
+    line-height: 170%
+    letter-spacing: 0.35em
+    color: #FFFFFF
+    @include adf(20, 16)
+  &__title
+    margin: 0 0 12px 0
+    font-family: ChocolateBox
+    font-weight: normal
+    color: #E2B024
+    @include adf(74, 45)
+    @include adi(43, 26)
+  &__subtitle
+    margin: 0 0 52px 0
+    font-family: Poppins
+    font-weight: normal
+    line-height: 170%
+    color: #FFFFFF
+    @include adf(36, 22)
+  &__text
+    margin: 0 0 60px 0
+    font-family: Poppins
+    font-weight: 300
+    color: #FFFFFF
+    @include adf(18, 15)
+    @include adi(30, 25)
+  &__buttons
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+    width: 100%
+  &__img
+    max-height: 690px
+    width: 568px
+    height: 690px
+
+@keyframes changeSize
+  0%
+    width: 374px
+    height: 374px
+  50%
+    transform: scale(0.6, 0.6)
+  100%
+    transform: scale(1, 1)
