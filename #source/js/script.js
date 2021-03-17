@@ -142,7 +142,7 @@ function removeActiveItem(item) {
         next = descriptionSlider.querySelector('.description-slider__next'),
         prev = descriptionSlider.querySelector('.description-slider__prev'),
         circle = descriptionSlider.querySelector('.description-slider__bg-block > img'),
-        width = window.getComputedStyle(container).width;
+        width = parseFloat(window.getComputedStyle(container).width) - (parseInt(window.getComputedStyle(container).paddingLeft) * 2);
   let offset = 0;
 
   sliderInner.style.width = (slides.length * 100) + '%';

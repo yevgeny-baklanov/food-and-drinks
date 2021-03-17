@@ -1,3 +1,56 @@
+@media (max-width: 1358px)
+  .description-slider
+    padding: 100px 0
+    &__bg-block
+      right: 40px
+      height: 439px
+      width: 500px
+      &>img
+        width: 350px
+        height: 350px
+    &__switches
+      right: 40px
+      width: 500px
+
+  .description-slider-slide
+    &__img
+      width: 577px
+      height: 610px
+
+@media (max-width: #{$md1 + px})
+  .description-slider
+    padding: 80px 0
+    &__bg-block
+      right: 10px
+      height: 368px
+      width: 439px
+      &>img
+        width: 290px
+        height: 290px
+    &__switches
+      right: 10px
+      width: 439px
+
+  .description-slider-slide
+    &__description
+      max-width: 440px
+    &__img
+      width: 459px
+      height: 533px
+    &__type
+      margin: 0 0 30px 0
+    &__title
+      margin: 0
+    &__subtitle
+      margin: 0 0 40px 0
+    &__text
+      margin: 0 0 50px 0
+
+  .learn-more
+    padding: 20px 25px
+  .view-more
+    padding: 20px 25px
+
 @media (max-width: 992px)
   .header
     &__user-list
@@ -38,6 +91,81 @@
     &__img
       width: 335px
       height: 341px
+
+  .description-slider
+    padding: 50px 0
+    &__bg-block
+      right: 50%
+      bottom: 210px
+      top: auto
+      transform: translate(50%, 0)
+      &>img
+        width: 290px
+        height: 290px
+    &__switches
+      right: 50%
+      bottom: 381px
+      top: auto
+      width: 439px
+      transform: translate(50%, 0)
+    &__slide
+      position: relative
+      flex-direction: column
+      padding: 0 0 94px 0
+
+  .description-slider-slide
+    &__description
+      max-width: 100%
+      align-items: center
+      margin: 0 0 23px 0
+    &__img
+      width: 100%
+    &__type
+      margin: 0 0 30px 0
+    &__subtitle
+      margin: 0 0 37px 0
+    &__text
+      margin: 0
+      max-width: 470px
+      text-align: center
+    &__buttons
+      position: absolute
+      bottom: 0
+      left: 50%
+      max-width: 439px
+      transform: translate(-50%, 0)
+
+  .learn-more
+    padding: 20px 25px
+  .view-more
+    padding: 20px 25px
+
+@media (max-width: 550px)
+  .description-slider
+    padding: 50px 0
+    &__bg-block
+      bottom: 130px
+      height: 250px
+      width: 300px
+      &>img
+        width: 200px
+        height: 200px
+    &__switches
+      bottom: 247px
+      width: 300px
+    &__slide
+      padding: 0 0 94px 0
+
+  .description-slider-slide
+    &__description
+      max-width: 100%
+      align-items: center
+      margin: 0 0 23px 0
+    &__img
+      height: 350px
+      width: 100%
+    &__buttons
+      max-width: 99%
 
 @media (max-width: 515px)
   .header
@@ -102,3 +230,29 @@
       padding: 10px 20px
       font-size: 17px
       line-height: 30px
+
+  .description-slider
+    padding: 40px 0
+    &__bg-block
+      bottom: 130px
+      height: 220px
+      width: 260px
+      &>img
+        width: 170px
+        height: 170px
+    &__switches
+      bottom: 233px
+      width: 260px
+    &__slide
+      padding: 0 0 94px 0
+
+  .description-slider-slide
+    &__description
+      margin: 0 0 12px 0
+    &__title
+      margin: 0 0 10px 0
+    &__subtitle
+      margin: 0 0 20px 0
+    &__img
+      height: 320px
+      width: 100%
