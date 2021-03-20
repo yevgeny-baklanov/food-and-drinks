@@ -51,6 +51,10 @@
   .view-more
     padding: 20px 25px
 
+  .futured-block-tabs
+    &__element
+      grid-template-columns: repeat(3, 1fr)
+
 @media (max-width: 992px)
   .header
     &__user-list
@@ -140,6 +144,17 @@
   .view-more
     padding: 20px 25px
 
+  .futured-block-tabs
+    &__element
+      grid-template-columns: repeat(2, 1fr)
+
+@media (max-width: 768px)
+  .futured-block
+    padding: 70px 0
+    &-tabs
+      &__element
+        grid-gap: 80px 60px
+
 @media (max-width: 550px)
   .description-slider
     padding: 50px 0
@@ -166,6 +181,10 @@
       width: 100%
     &__buttons
       max-width: 99%
+
+  .futured-block-tabs
+    &__element
+      grid-template-columns: repeat(1, 1fr)
 
 @media (max-width: 515px)
   .header
@@ -223,6 +242,12 @@
     &__img
       width: 255px
       height: 260px
+
+  .futured-block
+    padding: 50px 0
+    &-tabs-navigation
+      &__item:not(:last-child)
+        margin: 0 30px 0 0
 
 @media (max-width: 435px)
   .exl-modal
