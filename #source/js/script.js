@@ -169,4 +169,73 @@ next.addEventListener('click', () => {
 
 //description-modal
 
+//futured-tabs
+
+  const futuredBlock = document.querySelector('.futured-block');
+  const futuredBlockBody = futuredBlock.querySelector('.futured-block-tabs__body');
+  const futuredTabsNavigation = futuredBlock.querySelector('.futured-block-tabs-navigation');
+  const futuredTabsNavigationItem = futuredBlock.querySelectorAll('.futured-block-tabs-navigation__item');
+  const futuredTabsElementItems = futuredBlock.querySelectorAll('.futured-block-tabs-element-item');
+  let futuredTabsElements = [];
+  const futuredNavigationActiveLine = document.createElement('span');
+  
+  futuredTabsNavigation.prepend(futuredNavigationActiveLine);
+  futuredNavigationActiveLine.style.cssText = `
+    position: absolute;   
+    bottom: -8px;
+    left: 0;
+    z-index: 5;
+    height: 1px;
+    background: #E2B024;
+    border-radius: 2px;
+    width: ${window.getComputedStyle(futuredTabsNavigationItem[0]).width};
+    transition: all 0.8s ease;
+  `;
+
+  futuredTabsNavigationItem.forEach((item, index) => {
+    if (item.dataset.vinesType.toLowerCase().substr(1) == 'all') {
+      futuredTabsElements[index] = document.querySelector('.futured-block-tabs__element');
+    } else {
+      const newTabsElement = document.createElement('ul');
+      newTabsElement.classList.add('futured-block-tabs-element', 'futured-block-tabs__element');
+      newTabsElement.id = item.dataset.vinesType.substr(1);
+      futuredBlockBody.append(newTabsElement);
+      futuredTabsElements[index] = newTabsElement;
+    }
+  });
+
+  futuredTabsElementItems.forEach((item) => {
+    const tabsBlockTo = document.querySelector(`#${item.dataset.vineType}`);
+    const tabsItem = document.createElement('li');
+    
+    tabsItem.classList.add('futured-block-tabs-element-item', 'futured-block-tabs-element__item');
+    tabsItem.dataset.vineType = item.dataset.vineType;
+    tabsItem.innerHTML = item.innerHTML;
+    tabsBlockTo.append(tabsItem);
+  });
+
+  const showFuturedTab = function(link) {
+    const activeTab = document.querySelector(link);
+
+    futuredTabsElements.forEach((item) => {
+      item.style.display = 'none';
+    });
+
+    activeTab.style.display = 'grid';
+  };
+
+  futuredTabsElements[0].style.display = 'grid';
+
+  futuredTabsNavigation.addEventListener('click', (e) => {
+    if (e.target && e.target.matches('li')) {
+      showFuturedTab(e.target.dataset.vinesType);
+
+      futuredNavigationActiveLine.style.width = window.getComputedStyle(e.target).width;
+      futuredNavigationActiveLine.style.left = `${e.target.offsetLeft}px`;
+    }
+  });
+
+
+//futured-tabs
+
 });

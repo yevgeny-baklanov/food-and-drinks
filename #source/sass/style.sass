@@ -103,7 +103,7 @@ body, html
   @include adf(16, 15)
 
 .yellow
-  color: #E2B024
+  color: #E2B024 !important
 
 .underlined
   position: relative
@@ -142,13 +142,29 @@ body, html
   background: transparent
   @include adf(24, 16)
 
+.read-more
+  font-family: ChocolateBox
+  font-weight: normal
+  font-size: 16px
+  text-align: center
+  line-height: 9px
+
+.heading
+  font-family: ChocolateBox
+  font-weight: normal
+  color: #FFFFFF
+  text-align: center
+  @include adf(48, 28)
+  @include adi(28, 16)
+
 //</ОСНОВНОЙ БЛОК>=======================================================================================================
 
 //<ПОДКЛЮЧЕНИЯ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЕЛЕМЕНТОВ>=========================================================================
 
-@import "blocks/_header.sass"
+  @import "blocks/_header.sass"
 @import "blocks/_preview.sass"
 @import "blocks/_descr-slider.sass"
+@import "blocks/_futured-block.sass"
 @import "blocks/_footer.sass"
 @import "assets/_media.sass"
 
