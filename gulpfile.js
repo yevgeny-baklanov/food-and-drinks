@@ -19,7 +19,7 @@ const path = {
     html: [sourceFolder + "/*.html", "!" + sourceFolder + "/**/_*.html"],
     css: [sourceFolder + "/sass/*.sass", "!" + sourceFolder + "/sass/**/_*.sass"],
     js: [sourceFolder + "/js/*.js", "!" + sourceFolder + "/js/**/_*.js"],
-    img: sourceFolder + "/img/*.{jpg, svg, gif, ico, webp}",
+    img: sourceFolder + "/img/*.{jpg, jpeg, svg, gif, ico, webp}",
     pngimg: sourceFolder + "/img/*.png",
     svgimg: sourceFolder + "/img/icons/*.{svg, ico}",
     fonts: sourceFolder + "/fonts/**/*.ttf"
@@ -28,7 +28,7 @@ const path = {
     html: sourceFolder + "/**/*.html",
     css: sourceFolder + "/sass/**/*.sass",
     js: sourceFolder + "/js/**/*.js",
-    img: sourceFolder + "/img/*.{jpg, svg, gif, ico, webp}",
+    img: sourceFolder + "/img/*.{jpg, jpeg, svg, gif, ico, webp}",
     pngimg: sourceFolder + "/img/*.png",
     svgimg: sourceFolder + "/img/icons/*.{svg, ico}"
   },
@@ -37,21 +37,26 @@ const path = {
 //</ПУТИ К ЕЛЕМЕНТАМ>===================================================================================================
 
 
-const {src, dest, series, parallel} = require("gulp"),
-      gulp = require("gulp"),
-      browsersync = require("browser-sync").create(),
-      fileInclude = require("gulp-file-include"),
-      del = require("del"),
-      sass = require("gulp-sass"),
-      autoprefixer = require("gulp-autoprefixer"),
-      gcmq = require('gulp-group-css-media-queries'),
-      cleanCss = require('gulp-clean-css'),
-      rename = require('gulp-rename'),
-      uglify = require('gulp-uglify-es').default,
-      imagemin = require('gulp-imagemin'),
-      ttf2woff = require('gulp-ttf2woff'),
-      ttf2woff2 = require('gulp-ttf2woff2'),
-      fonter = require('gulp-fonter');
+const {
+  src,
+  dest,
+  series,
+  parallel
+} = require("gulp"),
+  gulp = require("gulp"),
+  browsersync = require("browser-sync").create(),
+  fileInclude = require("gulp-file-include"),
+  del = require("del"),
+  sass = require("gulp-sass"),
+  autoprefixer = require("gulp-autoprefixer"),
+  gcmq = require('gulp-group-css-media-queries'),
+  cleanCss = require('gulp-clean-css'),
+  rename = require('gulp-rename'),
+  uglify = require('gulp-uglify-es').default,
+  imagemin = require('gulp-imagemin'),
+  ttf2woff = require('gulp-ttf2woff'),
+  ttf2woff2 = require('gulp-ttf2woff2'),
+  fonter = require('gulp-fonter');
 
 function browserSync() {
   browsersync.init({
@@ -65,85 +70,89 @@ function browserSync() {
 
 function html() {
   return src(path.src.html)
-        .pipe(fileInclude())
-        .pipe(dest(path.build.html))
-        .pipe(browsersync.stream());
+    .pipe(fileInclude())
+    .pipe(dest(path.build.html))
+    .pipe(browsersync.stream());
 }
 // Проводит операции над html файлом
 
 function css() {
-        src(sourceFolder + "/css/*.css")
-        .pipe(dest(path.build.css));
+  src(sourceFolder + "/css/*.css")
+    .pipe(dest(path.build.css));
   return src(path.src.css)
-        .pipe(sass({
-          outputStyle: 'expanded'
-        }))
-        .pipe(gcmq())
-        .pipe(autoprefixer({
-          overrideBrowserslist: ["last 5 versions"]
-        }))
-        .pipe(dest(path.build.css))
-        .pipe(cleanCss())
-        .pipe(rename({
-          extname: ".min.css"
-        }))
-        .pipe(dest(path.build.css))
-        .pipe(browsersync.stream());
+    .pipe(sass({
+      outputStyle: 'expanded'
+    }))
+    .pipe(gcmq())
+    .pipe(autoprefixer({
+      overrideBrowserslist: ["last 5 versions"]
+    }))
+    .pipe(dest(path.build.css))
+    .pipe(cleanCss())
+    .pipe(rename({
+      extname: ".min.css"
+    }))
+    .pipe(dest(path.build.css))
+    .pipe(browsersync.stream());
 }
 // Проводит операции над css файлом
 
 function js() {
   return src(path.src.js)
-        .pipe(fileInclude())
-        .pipe(dest(path.build.js))
-        .pipe(uglify())
-        .pipe(rename({
-          extname: ".min.js"
-        }))
-        .pipe(dest(path.build.js))
-        .pipe(browsersync.stream());
+    .pipe(fileInclude())
+    .pipe(dest(path.build.js))
+    .pipe(uglify())
+    .pipe(rename({
+      extname: ".min.js"
+    }))
+    .pipe(dest(path.build.js))
+    .pipe(browsersync.stream());
 }
 // Проводит операции над js файлом
 
 function img() {
   return src(path.src.img)
-        .pipe(imagemin({
-          progressive: true,
-          svgoPlugins: [{removeViewBox: false}],
-          interlaced: true,
-          optimizationLevel: 3
-        }))
-        .pipe(dest(path.build.img))
-        .pipe(browsersync.stream());
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{
+        removeViewBox: false
+      }],
+      interlaced: true,
+      optimizationLevel: 3
+    }))
+    .pipe(dest(path.build.img))
+    .pipe(browsersync.stream());
 }
 // Проводит операции над картинками
 
 function pngimg() {
   return src(path.src.pngimg)
-        .pipe(imagemin({
-          progressive: true,
-          svgoPlugins: [{removeViewBox: false}],
-          interlaced: true,
-          optimizationLevel: 3
-        }))
-        .pipe(dest(path.build.pngimg))
-        .pipe(browsersync.stream());
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{
+        removeViewBox: false
+      }],
+      interlaced: true,
+      optimizationLevel: 3
+    }))
+    .pipe(dest(path.build.pngimg))
+    .pipe(browsersync.stream());
 }
 // Проводит операции над картинками
 
 function svgimg() {
   return src(path.src.svgimg)
-        .pipe(dest(path.build.svgimg))
-        .pipe(browsersync.stream());
+    .pipe(dest(path.build.svgimg))
+    .pipe(browsersync.stream());
 }
 
 function fonts() {
   src(path.src.fonts)
-  .pipe(ttf2woff())
-  .pipe(dest(path.build.fonts));
+    .pipe(ttf2woff())
+    .pipe(dest(path.build.fonts));
   return src(path.src.fonts)
-  .pipe(ttf2woff2())
-  .pipe(dest(path.build.fonts));
+    .pipe(ttf2woff2())
+    .pipe(dest(path.build.fonts));
 }
 // Проводит операции над шрифтами
 
@@ -158,10 +167,10 @@ function fontsStyle(params) {
         for (var i = 0; i < items.length; i++) {
           let fontname = items[i].split('.');
           fontname = fontname[0];
-            if (cFontname != fontname) {
-              fs.appendFile(sourceFolder + '/sass/assets/_fonts.sass',
+          if (cFontname != fontname) {
+            fs.appendFile(sourceFolder + '/sass/assets/_fonts.sass',
               '@include font("' + fontname + '", "' + fontname + '", "400", "normal")\r\n', cb);
-            }
+          }
           cFontname = fontname;
         }
       }
@@ -169,7 +178,7 @@ function fontsStyle(params) {
   }
 }
 
-function cb() { }
+function cb() {}
 
 function watchFiles() {
   gulp.watch([path.watch.html], html);
@@ -186,12 +195,12 @@ function clean() {
 }
 // Очищает исходную папку
 
-gulp.task('otf2ttf', function() {
+gulp.task('otf2ttf', function () {
   return src([sourceFolder + "/fonts/*.otf"])
-        .pipe(fonter({
-          format: ['ttf']
-        }))
-        .pipe(dest(sourceFolder + "/fonts/"));
+    .pipe(fonter({
+      format: ['ttf']
+    }))
+    .pipe(dest(sourceFolder + "/fonts/"));
 });
 // Превращает шрифты otf в ttf
 
