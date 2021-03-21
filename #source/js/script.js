@@ -246,7 +246,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const reviewsBlockSlides = reviewsBlock.querySelectorAll('.reviews-block__slide');
   const reviewsDots = [];
   let reviewsBlockOffset = 0;
-  let slideIndex = 1;
+  let reviewsSlideIndex = 1;
 
   reviewsBlockInner.style.width = (reviewsBlockSlides.length) * 100 + '%';
 
@@ -280,11 +280,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
   reviewIndicators.addEventListener('click', (e) => {
     if (e.target && e.target.matches('li')) {
-      slideIndex = e.target.dataset.index;
+      reviewsSlideIndex = e.target.dataset.index;
       clearInterval(reviewsBlockInterval);
       reviewsBlockInterval = setInterval(reviewsNextAnimation, 5000);
       reviewsChangeDot();
-      reviewsBlockOffset = +parseInt(width) * (slideIndex - 1);
+      reviewsBlockOffset = +parseInt(width) * (reviewsSlideIndex - 1);
       reviewsBlockInner.style.transform = `translateX(-${reviewsBlockOffset}px)`;
     }
   });
@@ -296,10 +296,10 @@ window.addEventListener('DOMContentLoaded', function () {
       reviewsBlockOffset += parseInt(width);
     }
 
-    if (slideIndex == reviewsBlockSlides.length) {
-      slideIndex = 1;
+    if (reviewsSlideIndex == reviewsBlockSlides.length) {
+      reviewsSlideIndex = 1;
     } else {
-      slideIndex++;
+      reviewsSlideIndex++;
     }
 
     reviewsChangeDot();
@@ -309,7 +309,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function reviewsChangeDot() {
     reviewsDots.forEach(item => item.style.background = '#ffffff');
-    reviewsDots[slideIndex - 1].style.background = '#E2B024';
+    reviewsDots[reviewsSlideIndex - 1].style.background = '#E2B024';
   }
 
   //reviews-slider
